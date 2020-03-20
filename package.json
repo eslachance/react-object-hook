@@ -1,0 +1,23 @@
+{
+  "name": "nested-object-hook",
+  "version": "1.0.0",
+  "description": "A dead simple react hook for complex multi-level state objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eslachance/react-object-hook.git"
+  },
+  "keywords": [],
+  "author": "Evelyne Lachance <eslachance@gmail.com> (https://evie.codes/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eslachance/react-object-hook/issues"
+  },
+  "homepage": "https://github.com/eslachance/react-object-hook#readme"
+}
