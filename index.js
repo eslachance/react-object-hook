@@ -5,19 +5,24 @@ const useObject = (initialValue = {}) => {
     if(typeof initialValue !== 'Object') {
         throw new Error("Initial value must be of object type");
     }
-    const [obj, setObj] = useState(initialValue || {});
-    const setValue = (value, path) => {
+    const [value, setObj] = useState(initialValue || {});
+    const setState = (value, path) => {
         if(!path) {
             setObj(value);
         } else if (path === 'merge') {
-            setObj(merge(obj, value));
+            setObj(merge(value, value));
         } else {
-            setObj(set(obj, path, value));
+            setObj(set(value, path, value));
         }
     };
 
-    const getValue = path => get(obj, path);
-    return [obj, setValue, getValue];
+    const getState = path => get(obj, path);
+    return {
+        value,
+        setState,
+        getState,
+        mergeState,
+    };
 }
 
 export default useObject;
