@@ -51,7 +51,7 @@ const MyComponent = props => {
 
   console.log(state); // logs initialState
   console.log(getState('d.thing.a')); // majig
-  setState('meme', 'd.thing.a'); 
+  setStatePath('meme', 'd.thing.a'); 
   console.log(getState('d.thing.a')); // meme
   return (
     <div>Get the d: {getState('d.thing.a')}</div>
@@ -68,13 +68,13 @@ The initial state must be an object. GEE I WONDER WHY.
 
 Returns an object with the following possible properties: 
 - `state`: The object with the current value, just like any other react state in the history of react states.
-- `setState`: A function with 2 arguments: 
+- `setStatePath`: A function with 2 arguments: 
   - `value`: The value to set into the state. If there is no path, this should be an object and will override the entire stored object.
   - `path`: A path to the property to change. Standard lodash path. See [Lodash Documentation](https://lodash.com/docs/4.17.15#get) for deets.
 - `getState`: A function that takes a path and returns the value at that path (instead of the whole object, for optimization).
   - `path`: See above, same deal
   - `default`: Value returned if the path leads to an undefined value. Just like lodash get().
-- `mergeState`: A function that takes in an object and merges it with the current object value, in a recursive fashion. This... is pretty much like the old `setState`'s behaviour, sort of. Remember setState? ;)
+- `setState`: A function that takes in an object and merges it with the current object value, in a recursive fashion. This... is pretty much like the old `setState`'s behaviour, sort of. Remember setState? Oh, but it doesn't provide the "old state", just use `state` for that!
  
 
 ## The future is bleak and uncertain
