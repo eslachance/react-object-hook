@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { get, set, merge } from 'lodash';
+import { get, set, merge, clone } from 'lodash';
 
 const useObject = (initialValue = {}) => {
     if(typeof initialValue !== 'object') {
@@ -8,14 +8,14 @@ const useObject = (initialValue = {}) => {
     const [state, setObj] = useState(initialValue || {});
 
     const setStatePath = (value, path) => path ? 
-        setObj(set(state, path, value)) :
-        setObj(value);
+        setObj(clone(set(state, path, value))) :
+        setObj(clone(value));
 
     const setState = newState => {
-        setObj(merge(state, newState));
-    }
+        setObj(clone(merge(state, newState)));
+    };
 
-    const getState = path => get(obj, path);
+    const getState = path => get(state, path);
 
     return {
         state,
@@ -23,6 +23,6 @@ const useObject = (initialValue = {}) => {
         getState,
         setStatePath,
     };
-}
+};
 
 export default useObject;
