@@ -47,7 +47,7 @@ const initialState = {
 }
 
 const MyComponent = props => {
-  const [state, setState, getState] = useObject(initialState);
+  const {state, setState, getState} = useObject(initialState);
 
   console.log(state); // logs initialState
   console.log(getState('d.thing.a')); // majig
